@@ -11,7 +11,7 @@ import {
 import { logout, setUser } from "../features/user/userSlice";
 
 const baseApiQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api",
+  baseUrl: "https://carstore-lake.vercel.app/api",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
