@@ -10,10 +10,10 @@ import { Button } from "@/components/ui/button";
 
 const AllProduct = () => {
     const [search, setSearch] = useState('')
-    const [category, setCategory] = useState(null)
+    const [category, setCategory] = useState<string | null>(null)
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(100000);
-    const [price, setPrice] = useState(70000)
+
     const { data: products = [], isLoading } = useGetAllCarQuery([
         { name: 'limit', value: 6 },
         { name: 'searchTerm', value: search },

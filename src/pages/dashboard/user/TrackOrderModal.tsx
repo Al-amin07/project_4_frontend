@@ -9,7 +9,7 @@ import {
 
     DialogTrigger,
 } from "@/components/ui/dialog"
-import OrderTrack from "./OrderTrack"
+import OrderTrack, { TStatus } from "./OrderTrack"
 
 
 
@@ -17,7 +17,7 @@ import OrderTrack from "./OrderTrack"
 
 
 
-export default function TrackOrderModal({ open, setOpen, status }: { setOpen: (open: boolean) => void, open: boolean, status: string }) {
+export default function TrackOrderModal({ open, setOpen, status }: { setOpen: (open: boolean) => void, open: boolean, status: TStatus }) {
 
 
 

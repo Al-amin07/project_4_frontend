@@ -12,7 +12,7 @@ const Cars = () => {
         <div>
 
             <Text title="Discover the Perfect Car for You" desc="Explore our wide range of high-quality cars, from luxury sedans to powerful SUVs. Whether you're looking for speed, comfort, or efficiency, we have the perfect vehicle to match your style and needs. Start your journey today" />
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {
                     cars?.slice(0, 6)?.map((el: TCar) => <ProductCard key={el?._id} car={el} />)
                 }

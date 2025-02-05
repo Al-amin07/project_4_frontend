@@ -1,19 +1,20 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
+export type TStatus = "pending" | "processing" | "shipped" | "delivered" | 'canceled'
 const steps = ["Pending", "Processing", "Shipped", "Delivered"];
+const statusMap = {
+    pending: 1,
+    processing: 2,
+    shipped: 3,
+    delivered: 4,
+    canceled: 0, // Special case for canceled
+} as const;
+const getStatusIndex = (status: keyof typeof statusMap): number => {
 
-const getStatusIndex = (status: string) => {
-    const statusMap = {
-        pending: 1,
-        processing: 2,
-        shipped: 3,
-        delivered: 4,
-        canceled: 0, // Special case for canceled
-    };
-    return statusMap[status] || 1;
+    const result = statusMap[status]
+    return result || 1;
 };
 
-const OrderStatusTracker = ({ status }: { status: string }) => {
+const OrderStatusTracker = ({ status }: { status: TStatus }) => {
     // const currentStep = getStatusIndex(status);
     const isCanceled = status === "canceled";
     const [currentStep, setCurrentStep] = useState(getStatusIndex(status));
@@ -64,13 +65,13 @@ const OrderStatusTracker = ({ status }: { status: string }) => {
             {/* Buttons for Simulating Status Change */}
             <div className="mt-4 flex justify-center gap-4">
                 <button
-                    onClick={() => setCurrentStep((prev) => Math.max(1, prev - 1))}
+                    onClick={() => setCurrentStep((prev: number) => Math.max(1, prev - 1))}
                     className="px-4 text-sm py-1.5 bg-black text-white  rounded-full"
                 >
                     Prev
                 </button>
                 <button
-                    onClick={() => setCurrentStep((prev) => Math.min(steps.length, prev + 1))}
+                    onClick={() => setCurrentStep((prev: number) => Math.min(steps.length, prev + 1))}
                     className="px-4 text-sm py-1.5 bg-teal-500 text-white rounded-full"
                 >
                     Next

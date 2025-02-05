@@ -9,6 +9,7 @@ import ChangePasswordModal from "../modal/ChangePasswordModal";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import toast from "react-hot-toast";
+
 export default function Profile() {
     const userCredential = useAppSelector(selectUser);
     const [open, setOpen] = useState(false)
@@ -20,7 +21,7 @@ export default function Profile() {
             const body = {
                 ...data
             }
-            const result = await changepassword({ body, id: user?._id })
+            const result = await changepassword({ body, id: user?._id }) as any
             console.log(result)
             if (result?.error) {
                 throw new Error(result?.error?.message)
@@ -39,7 +40,7 @@ export default function Profile() {
     return (
 
         <div className=" h-full flex items-center justify-center">
-            <div className='bg-white shadow-lg rounded-2xl w-3/5 '>
+            <div className='bg-white shadow-lg rounded-2xl lg:w-3/5 '>
                 <img
                     alt='profile'
 
@@ -60,7 +61,7 @@ export default function Profile() {
                         Created At :{new Date(user.createdAt).toLocaleDateString()}
                     </p>
                     <div className='w-full p-2 mt-4 rounded-lg'>
-                        <div className='flex flex-wrap items-center justify-between text-sm text-gray-600 '>
+                        <div className='flex flex-wrap items-center gap-3 md:gap-6 justify-between text-sm text-gray-600 '>
                             <p className='flex flex-col'>
                                 Name
                                 <span className='font-bold text-black '>

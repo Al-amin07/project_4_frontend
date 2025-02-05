@@ -31,7 +31,7 @@ const faqs = [
 const Faq = () => {
     return (
         <section className="bg-white dark:bg-gray-900">
-            <div className="container px-6 py-12 mx-auto">
+            <div className="container lg:px-6 py-12 mx-auto">
 
 
                 <Text title="Frequently asked questions." desc="Have questions about buying, financing, or maintaining your car? We’ve got you covered! Explore our FAQs to find answers to common queries about test drives, warranties, trade-ins, and more." />

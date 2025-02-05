@@ -1,4 +1,3 @@
-import React from 'react';
 
 const Text = ({ title, desc }: { title: string, desc: string }) => {
     return (

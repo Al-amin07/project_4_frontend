@@ -6,7 +6,7 @@ import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
 import PaymentModal from "../dashboard/modal/PaymentModal";
 
-
+import img from '@/assets/car2.jpeg'
 const SingleProduct = () => {
     const { productId } = useParams()
     const { data, isLoading, refetch } = useGetSingleCarQuery(productId as string)
@@ -29,33 +29,33 @@ const SingleProduct = () => {
     };
 
 
-    if (isLoading) return <Loading />
     const totalprice = car?.price * quantity;
-    console.log({ totalprice })
+    console.log({ totalprice, car: car?.image })
+    if (isLoading) return <Loading />
     return (
         <div className="max-w-7xl mx-auto min-h-[300px] p-6 bg-white border rounded-lg">
             <div className="flex flex-col md:flex-row">
-                {car.image && (
-                    <div className="md:w-1/2 h-full border-4">
-                        <img
-                            src={car.image}
-                            alt={`${car.brand} ${car.model}`}
-                            className="w-full object-cover h-full rounded-lg"
-                        />
-                    </div>
-                )}
-                <div className={`md:w-1/2 ${car.image ? 'md:ml-6' : ''}`}>
+
+                <div className="md:w-1/2 h-full">
+                    <img
+                        src={car?.image ? car?.image : img}
+                        alt={`${car?.brand} ${car?.model}`}
+                        className="w-full object-cover h-full rounded-lg"
+                    />
+                </div>
+
+                <div className={`md:w-1/2 ${car?.image ? 'md:ml-6' : ''}`}>
                     <h1 className="text-3xl font-bold text-gray-800">
-                        {car.brand} {car.model}
+                        {car?.brand} {car?.model}
                     </h1>
-                    <p className="text-gray-600 mt-2">Category: {car.category}</p>
-                    <p className="text-gray-600 mt-2">Release Date : {car.year}</p>
-                    <p className="text-gray-600 mt-2">Price: ${car.price.toLocaleString()}</p>
-                    <p className="text-gray-600 mt-2">Quantity: {car.quantity}</p>
-                    <p className={`mt-2 font-medium ${car.inStock ? 'text-green-600' : 'text-red-600'}`}>
+                    <p className="text-gray-600 mt-2">Category: {car?.category}</p>
+                    <p className="text-gray-600 mt-2">Release Date : {car?.year}</p>
+                    <p className="text-gray-600 mt-2">Price: ${car?.price.toLocaleString()}</p>
+                    <p className="text-gray-600 mt-2">Quantity: {car?.quantity}</p>
+                    <p className={`mt-2 font-medium ${car?.inStock ? 'text-green-600' : 'text-red-600'}`}>
                         {car.inStock ? 'In Stock' : 'Out of Stock'}
                     </p>
-                    <p className="text-gray-600 my-4">{car.description}</p>
+                    <p className="text-gray-600 my-4">{car?.description}</p>
                     {/* <p className="text-gray-600 mt-4">Added on: {new Date(car.createdAt).toLocaleDateString()}</p> */}
                     <div className="flex w-32 items-center gap-3 border border-teal-500 rounded-lg p-2">
                         <button
