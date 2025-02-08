@@ -63,8 +63,9 @@ const CheckoutForm = ({ orderData, setOpen, refetch }: TProp) => {
 
     return (
         <form onSubmit={handleSubmit} className="w-full  mx-auto space-y-6">
-            <div className="bg-white px-4  py-3 rounded-lg shadow-sm border">
+            <div className="bg-white border-red-400 px-4  py-3 rounded-lg shadow-sm border">
                 <CardElement
+
                     options={{
                         style: {
                             base: {
@@ -72,11 +73,13 @@ const CheckoutForm = ({ orderData, setOpen, refetch }: TProp) => {
                                 color: "#424770",
                                 "::placeholder": {
                                     color: "#aab7c4",
+
                                 },
                             },
                             invalid: {
                                 color: "#9e2146",
                             },
+
                         },
                     }}
                 />
@@ -89,7 +92,7 @@ const CheckoutForm = ({ orderData, setOpen, refetch }: TProp) => {
           transition-colors disabled:bg-teal-400 disabled:cursor-not-allowed flex items-center justify-center"
             >
                 {loading ? (
-                    <span className="flex items-center gap-2">
+                    <span className="flex border-2 items-center gap-2">
                         Processing...
                         <svg
                             className="animate-spin h-5 w-5 text-white"
@@ -116,6 +119,7 @@ const CheckoutForm = ({ orderData, setOpen, refetch }: TProp) => {
                     `Pay  $${orderData?.totalPrice}`
                 )}
             </button>
+
         </form>
     );
 };

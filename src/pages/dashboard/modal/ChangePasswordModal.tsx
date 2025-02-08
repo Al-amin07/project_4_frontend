@@ -30,7 +30,7 @@ export default function ChangePasswordModal({ isLoading = false, onSubmit, open,
                 </button>
             </DialogTrigger>
 
-            <DialogContent className="sm:max-w-md">
+            <DialogContent className="sm:max-w-md [&>button]:hidden">
                 <DialogHeader>
                     <DialogTitle>Change Password</DialogTitle>
                 </DialogHeader>

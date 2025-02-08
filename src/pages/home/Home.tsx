@@ -12,7 +12,7 @@ import Blog from "./Blog";
 
 const Home = () => {
     return (
-        <div className="space-y-24 ">
+        <div className="space-y-20 ">
 
             <Header />
             <Cars />

@@ -32,7 +32,7 @@ export default function TrackOrderModal({ open, setOpen, status }: { setOpen: (o
                 </button>
             </DialogTrigger>
 
-            <DialogContent className="max-w-md md:max-w-2xl">
+            <DialogContent className="max-w-md md:max-w-2xl [&>button]:hidden">
                 <DialogHeader>
 
                 </DialogHeader>

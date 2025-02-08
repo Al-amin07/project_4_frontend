@@ -25,9 +25,9 @@ export default function StatusModal({ isLoading, handleStatus, defaultValue }: {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <button className=" rounded-full cursor-pointer text-blue-600 text-xs border-0 hover:bg-blue-50 px-2.5 py-1.5">Change Status</button>
+                <button className=" rounded-full cursor-pointer text-blue-600 text-xs border-0 hover:bg-blue-100 bg-blue-50 px-2.5 py-1.5">Change Status</button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
+            <DialogContent className="sm:max-w-md [&>button]:hidden">
                 <DialogHeader>
                     <DialogTitle>Change Status</DialogTitle>
                 </DialogHeader>
@@ -41,7 +41,7 @@ export default function StatusModal({ isLoading, handleStatus, defaultValue }: {
                             </Button>
                         </DialogClose>
                         <DialogClose asChild>
-                            <Button type="button" className=" hover:bg-slate-100 text-blcak" variant="secondary">
+                            <Button type="button" className="  text-blcak" variant="default">
                                 Cancel
                             </Button>
                         </DialogClose>

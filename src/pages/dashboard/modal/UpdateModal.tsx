@@ -34,9 +34,9 @@ export function UpdateModal({ isLoading, onSubmit, defaultValue, }: { isLoading:
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <button className=" rounded-full cursor-pointer text-blue-600 text-xs border-0 hover:bg-blue-50 px-2.5 py-1.5">Update</button>
+                <button className=" rounded-full cursor-pointer text-blue-600 text-xs border-0 hover:bg-blue-100 bg-blue-50 px-2 py-1.5">Update</button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-xl ">
+            <DialogContent className="sm:max-w-xl [&>button]:hidden ">
                 <DialogHeader>
                     <DialogTitle>Update Car</DialogTitle>
                 </DialogHeader>

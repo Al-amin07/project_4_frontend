@@ -11,7 +11,7 @@ import {
 import { logout, setUser } from "../features/user/userSlice";
 
 const baseApiQuery = fetchBaseQuery({
-  baseUrl: "https://carstore-lake.vercel.app/api",
+  baseUrl: import.meta.env.VITE_API_URL,
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;

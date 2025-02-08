@@ -3,7 +3,7 @@ import Loading from "../../components/Loading";
 import { useGetAllCarQuery } from "../../redux/features/cars/carApi";
 import { TCar } from "../../types";
 import ProductCard from "./ProductCard";
-import { Select, SelectContent, SelectGroup, SelectTrigger, SelectValue, SelectItem } from "@/components/ui/select";
+import { Select, SelectContent, SelectGroup, SelectTrigger, SelectValue, SelectItem, SelectLabel } from "@/components/ui/select";
 import { categories } from "../dashboard/admin/contains";
 import { Button } from "@/components/ui/button";
 
@@ -37,13 +37,13 @@ const AllProduct = () => {
         <div>
             <div className="flex items-center justify-center flex-wrap gap-6 mb-8">
                 <input placeholder="Search here" onChange={(e) => setSearch(e.target.value)} type="text" className="border py-1 px-3" />
-                <Select defaultValue={category || ''} onValueChange={(value) => setCategory(value)}>
+                <Select onValueChange={(value) => setCategory(value)}>
                     <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Select Category" />
+                        <SelectValue className="text-black" placeholder="Select Category" />
                     </SelectTrigger>
                     <SelectContent>
                         <SelectGroup>
-                            {/* <SelectLabel>Select Category</SelectLabel> */}
+                            <SelectLabel>Select Category</SelectLabel>
                             {
                                 categories.map(el => <SelectItem value={el?.value}>{el?.value}</SelectItem>)
                             }

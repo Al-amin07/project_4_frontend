@@ -13,21 +13,31 @@ import toast from "react-hot-toast";
 import { ImSpinner5 } from "react-icons/im";
 import MainTextarea from "../form/MainTextarea";
 import { useNavigate } from "react-router";
+import getImage from "../shared/getImage";
+import { useState } from "react";
 
 const CreateCar = () => {
     const [createCar, { isLoading }] = useCreateCarMutation()
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false)
     const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
 
         try {
+            setLoading(true)
             const { image, ...restData } = data
 
             console.log(image, restData)
-            const formData = new FormData()
-            formData.append('file', image[0])
 
-            formData.append('data', JSON.stringify(restData))
-            const result = await createCar(formData).unwrap()
+            if (image) {
+
+                const imageUrl = await getImage(image[0])
+                restData.image = imageUrl;
+            }
+            console.log(restData)
+
+
+            const result = await createCar(restData).unwrap();
+            console.log(result)
             console.log(result)
             if (result?.success) {
                 toast.success(result?.message)
@@ -35,6 +45,8 @@ const CreateCar = () => {
             }
         } catch (error: any) {
             toast.error(error?.message || 'Something went wrong')
+        } finally {
+            setLoading(false)
         }
 
     }
@@ -70,7 +82,7 @@ const CreateCar = () => {
                         <MainTextarea name="description" label="Description" />
                     </div>
                     <div className="flex justify-end mt-3">
-                        <Button disabled={isLoading} type="submit" className="px-6 disabled:cursor-not-allowed disabled:bg-neutral-900">Add Car {isLoading && <ImSpinner5 size={20} className="animate-spin my-auto ml-1" />}</Button>
+                        <Button disabled={isLoading || loading} type="submit" className="px-6 disabled:cursor-not-allowed disabled:bg-neutral-900">Add Car {isLoading || loading && <ImSpinner5 size={20} className="animate-spin my-auto ml-1" />}</Button>
                     </div>
                 </MainForm>
             </div>

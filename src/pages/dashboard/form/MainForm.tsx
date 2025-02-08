@@ -24,7 +24,7 @@ const MainForm = ({ onSubmit, children, resolver, defaultValues }: IProp) => {
     const submit = (data: FieldValues) => {
 
         onSubmit(data)
-        methods.reset()
+        // methods.reset()
     }
     const methods = useForm(formConfig);
     return (

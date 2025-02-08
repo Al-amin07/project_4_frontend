@@ -56,23 +56,24 @@ const SingleProduct = () => {
                         {car.inStock ? 'In Stock' : 'Out of Stock'}
                     </p>
                     <p className="text-gray-600 my-4">{car?.description}</p>
-                    {/* <p className="text-gray-600 mt-4">Added on: {new Date(car.createdAt).toLocaleDateString()}</p> */}
-                    <div className="flex w-32 items-center gap-3 border border-teal-500 rounded-lg p-2">
-                        <button
-                            className="p-2 bg-teal-500 text-white rounded-md disabled:opacity-50"
+
+                    <div className="flex w-32  items-center gap-3 border border-teal-500 rounded-lg p-2">
+
+                        <span
+                            className="p-2 cursor-pointer bg-teal-500 flex justify-center text-white rounded-md disabled:opacity-50"
                             onClick={handleDecrease}
-                            disabled={quantity === 1}
+                        // disabled={quantity === 1}
                         >
                             <Minus size={18} />
-                        </button>
+                        </span>
                         <span className="w-10 text-center text-lg font-medium">{quantity}</span>
-                        <button
-                            className="p-2 bg-teal-500 text-white rounded-md disabled:opacity-50"
+                        <span
+                            className="p-2 cursor-pointer flex justify-center  bg-teal-500 text-white rounded-md disabled:opacity-50"
                             onClick={handleIncrease}
-                            disabled={quantity === 10}
+
                         >
                             <Plus size={18} />
-                        </button>
+                        </span>
                     </div>
                     {/* Order Button */}
 

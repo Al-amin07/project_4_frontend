@@ -53,7 +53,7 @@ const OrderTable = ({ order, refetch }: { order: TOrder, refetch: () => void }) 
                 <div className="text-sm text-gray-900">{order?.quantity}</div>
             </td>
             <td className="px-6 py-4 whitespace-nowrap">
-                <div className={`text-sm  text-gray-900`}>{order?.totalPrice}</div>
+                <div className={`text-sm  text-gray-900`}>$ {order?.totalPrice}</div>
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {format(new Date(order?.createdAt), "PP")}

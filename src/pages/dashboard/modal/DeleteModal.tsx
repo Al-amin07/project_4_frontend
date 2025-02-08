@@ -24,9 +24,9 @@ export default function DeleteModal({ isLoading, handleDelete }: { isLoading: bo
     return (
         <Dialog >
             <DialogTrigger asChild>
-                <button className=" rounded-full cursor-pointer text-red-600 text-xs border-0 hover:bg-red-50 px-2.5 py-1.5">Delete</button>
+                <button className=" rounded-full bg-red-50 cursor-pointer text-red-600 text-xs border-0 hover:bg-red-100 px-2.5 py-1.5">Delete</button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
+            <DialogContent className="sm:max-w-md [&>button]:hidden">
                 <DialogHeader>
                     <DialogTitle>Confirm Deletion</DialogTitle>
                 </DialogHeader>

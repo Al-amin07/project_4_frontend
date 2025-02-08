@@ -51,7 +51,7 @@ export default function PaymentModal({ open, setOpen, car, totalPrice, quantity,
                 </button>
             </DialogTrigger>
 
-            <DialogContent className="sm:max-w-xl">
+            <DialogContent className="sm:max-w-xl [&>button]:hidden">
                 <DialogHeader>
                     <DialogTitle className="text-2xl">Car Details</DialogTitle>
                 </DialogHeader>

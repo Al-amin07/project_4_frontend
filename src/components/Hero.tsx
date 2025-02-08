@@ -14,7 +14,7 @@ const Hero = ({ img }: { img: string }) => {
                     <h1 className="text-3xl md:text-5xl text-white font-medium">
                         Drive Your Dream Car
                     </h1>
-                    <p className="mt-2 w-full md:w-3/4 mx-auto text-lg md:text-xl text-gray-100">
+                    <p className="my-4 w-full md:w-3/4 mx-auto text-lg md:text-xl text-gray-100">
                         Explore our exclusive collection of luxury and sports cars at unbeatable prices.
                     </p>
 

@@ -78,9 +78,9 @@ export default function AdminSidebar({ isOpen, setIsOpen, logOut }: TProp) {
                         </h2>
                     </Link>
                 ))}
-                <button
+                <span
                     onClick={logOut}
-                    className="group flex items-center text-sm gap-3.5 font-medium px-4 py-3 transition-colors duration-500 hover:bg-gray-800 rounded-md mt-auto"
+                    className="group cursor-pointer  flex items-center text-sm gap-3.5 font-medium px-4 py-3 transition-colors duration-500 hover:bg-teal-600 rounded-md mt-auto"
                 >
                     <div>
                         <MdOutlineLogout size="20" />
@@ -100,7 +100,7 @@ export default function AdminSidebar({ isOpen, setIsOpen, logOut }: TProp) {
                     >
                         Logout
                     </h2>
-                </button>
+                </span>
             </div>
         </SidebarWrapper>
     );

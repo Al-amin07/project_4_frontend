@@ -51,7 +51,7 @@ export default function UserSidebar({ isOpen, setIsOpen, logOut }: TProp) {
                     <Link
                         to={menu.link}
                         key={i}
-                        className={`group flex items-center text-sm gap-3.5 font-medium  p-3 hover:bg-gray-800 transition-colors duration-500 rounded-md ${location.pathname === menu.link && "bg-teal-600"
+                        className={`group flex items-center text-sm gap-3.5 font-medium  p-3 hover:bg-teal-600 transition-colors duration-500 rounded-md ${location.pathname === menu.link && "bg-teal-600"
                             }`}
                     >
                         <div>{React.createElement(menu.icon, { size: "20" })}</div>
@@ -72,9 +72,9 @@ export default function UserSidebar({ isOpen, setIsOpen, logOut }: TProp) {
                         </h2>
                     </Link>
                 ))}
-                <button
+                <span
                     onClick={logOut}
-                    className="group flex items-center text-sm gap-3.5 font-medium px-4 py-3 transition-colors duration-500 hover:bg-gray-800 rounded-md mt-auto"
+                    className="group cursor-pointer w-full flex items-center text-sm gap-3.5 font-medium px-4 py-3 transition-colors duration-500 hover:bg-teal-600 rounded-md mt-auto"
                 >
                     <div>
                         <MdOutlineLogout size="20" />
@@ -94,7 +94,7 @@ export default function UserSidebar({ isOpen, setIsOpen, logOut }: TProp) {
                     >
                         Logout
                     </h2>
-                </button>
+                </span>
             </div>
         </SidebarWrapper>
     );
