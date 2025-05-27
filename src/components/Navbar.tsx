@@ -6,9 +6,11 @@ import { useState } from "react";
 
 const navLinks = [
     { path: '/', name: 'Home' },
-    { path: '/all-product', name: 'All Products' },
+    { path: '/all-product', name: 'Products' },
+    { path: '/blog', name: 'Blogs' },
     { path: '/about', name: 'About Us' },
     { path: '/contact', name: 'Contact Us' },
+    { path: '/faq', name: 'Faq' },
 ]
 
 const Navbar = () => {
@@ -35,7 +37,7 @@ const Navbar = () => {
                                         <NavLink to={el?.path} className={`text-gray-800 transition py-2 px-4  text-base 
                                            
                                             ${location?.pathname === el.path && ' bg-teal-600 font-medium text-white'}`} > {el?.name}
-                                            {/* ${location?.pathname === el.path && ' underline decoration-teal-500 decoration-[3px] text-teal-500  font-medium underline-offset-8'}`} > {el?.name} */}
+
 
                                         </NavLink>
                                     </li>)
@@ -45,13 +47,13 @@ const Navbar = () => {
                         </nav>
                     </div>
 
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
                         {
                             user ?
-                                <div className="sm:flex sm:gap-4">
+                                <div className="sm:flex sm:gap-2">
                                     <Link
-                                        className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-                                        // className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
+                                        className="rounded-md bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow"
+
                                         to={'/dashboard'}
                                     >
                                         DashBoard
@@ -61,16 +63,16 @@ const Navbar = () => {
                                         <button
                                             onClick={handleLogout}
                                             className="rounded-md cursor-pointer
-                                            bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600"
+                                            bg-gray-100 px-4 py-2 text-sm font-medium text-teal-600"
 
                                         >
                                             logout
                                         </button>
                                     </div>
                                 </div> :
-                                <div className="sm:flex sm:gap-4">
+                                <div className="sm:flex sm:gap-2">
                                     <Link
-                                        className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
+                                        className="rounded-md bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow"
                                         to={'/login'}
                                     >
                                         Login
@@ -79,7 +81,7 @@ const Navbar = () => {
                                     <div className="hidden sm:flex">
                                         <Link
                                             to={'/register'}
-                                            className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600"
+                                            className="rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-teal-600"
 
                                         >
                                             Register

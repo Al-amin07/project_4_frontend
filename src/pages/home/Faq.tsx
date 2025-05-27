@@ -1,6 +1,6 @@
 import Text from "./Text";
 
-const faqs = [
+export const faqs = [
     {
         question: "What financing options are available for purchasing a car?",
         answer: "We offer multiple financing options, including bank loans, lease-to-own programs, and in-house financing. Our partnerships with leading financial institutions allow us to provide competitive interest rates and flexible repayment terms. You can apply online or visit our dealership to discuss the best financing option for your budget and needs."

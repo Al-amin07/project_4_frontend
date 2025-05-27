@@ -18,6 +18,8 @@ import Orders from "@/pages/dashboard/admin/Orders";
 import CreateCar from "@/pages/dashboard/admin/CareatCar";
 import Profile from "@/pages/dashboard/shared/Profile";
 import Order from "@/pages/dashboard/user/Order";
+import BlogPage from "@/pages/blog/BlogPage";
+import FAQPage from "@/pages/faq/FaqPage";
 
 const routes = createBrowserRouter([
     {
@@ -32,6 +34,14 @@ const routes = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login />
+            },
+            {
+                path: '/blog',
+                element: <BlogPage />
+            },
+            {
+                path: '/faq',
+                element: <FAQPage />
             },
             {
                 path: '/register',

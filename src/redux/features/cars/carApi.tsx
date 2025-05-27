@@ -17,9 +17,9 @@ const carApi = baseApi.injectEndpoints({
                 }
             },
             providesTags: ['Car'],
-            transformResponse: (response: { data: any }) => {
-                return response.data
-            }
+            // transformResponse: (response: { data: any }) => {
+            //     return respons
+            // }
         }),
         getSingleCar: builder.query({
             query: (id: string) => `/cars/${id}`

@@ -42,9 +42,9 @@ export default function PaymentModal({ open, setOpen, car, totalPrice, quantity,
             <DialogTrigger asChild>
                 <button
                     onClick={() => setOpen(true)}
-                    className={`mt-6 px-5 py-1.5 rounded-sm font-semibold ${car?.inStock
-                        ? 'bg-neutral-800 text-white hover:bg-neutral-900'
-                        : 'bg-gray-400 text-gray-700 cursor-not-allowed'
+                    className={`mt-6 px-5 py-2  font-semibold ${car?.inStock
+                        ? 'bg-teal-600 text-white border border-teal-600 hover:text-teal-600 hover:bg-transparent transition-all duration-500 ease-in-out'
+                        : 'bg-gray-400 text-gray-700  cursor-not-allowed'
                         }`}
                 >
                     {car.inStock ? 'Buy Now' : 'Out of Stock'}

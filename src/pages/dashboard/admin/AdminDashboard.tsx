@@ -12,8 +12,9 @@ import OrderTable from "../table/OrderTable";
 const AdminDashboard = () => {
     const { data } = useGetAdminDataQuery(null)
     console.log(data)
-    const { data: cars = [], refetch } = useGetAllCarQuery(null)
+    const { data: products, refetch } = useGetAllCarQuery(null)
     const { data: orders = [] } = useGetAllOrderQuery(null)
+    const cars = products?.data || [];
     return (
         <div className="p-4">
             <h1 className="text-2xl font-bold mb-4">Dashboard Overview</h1>

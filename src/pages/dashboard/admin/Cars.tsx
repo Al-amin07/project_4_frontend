@@ -8,8 +8,8 @@ import CarTable from "../table/CarTable";
 
 
 const Cars = () => {
-    const { data: cars = [], isLoading, refetch } = useGetAllCarQuery(null)
-
+    const { data, isLoading, refetch } = useGetAllCarQuery(null)
+    const cars = data?.data;
     if (isLoading) return <TableLoader text="Car Management" />
     return (
         <div className="p-4">

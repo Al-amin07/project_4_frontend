@@ -4,17 +4,19 @@ import { TCar } from "@/types";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import Text from "./Text";
-import Loading from "@/components/Loading";
+
+import ProductSkeletonCard from "@/components/loader/ProductSkeletonLoader";
 
 
 const Cars = () => {
-    const { data: cars = [], isLoading } = useGetAllCarQuery(null)
+    const { data: products, isLoading } = useGetAllCarQuery(null)
+    const cars = products?.data || [];
     return (
         <div>
 
             <Text title="Discover the Perfect Car for You" desc="Explore our wide range of high-quality cars, from luxury sedans to powerful SUVs. Whether you're looking for speed, comfort, or efficiency, we have the perfect vehicle to match your style and needs. Start your journey today" />
             {
-                isLoading ? <Loading /> : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                isLoading ? <ProductSkeletonCard /> : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {
                         cars?.slice(0, 6)?.map((el: TCar) => <ProductCard key={el?._id} car={el} />)
                     }

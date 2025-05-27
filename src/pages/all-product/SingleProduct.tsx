@@ -1,12 +1,11 @@
 import { useParams } from "react-router";
 import { useGetSingleCarQuery } from "../../redux/features/cars/carApi";
-import Loading from "../../components/Loading";
-
 import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
 import PaymentModal from "../dashboard/modal/PaymentModal";
 
 import img from '@/assets/car2.jpeg'
+import SingleProductSkeleton from "@/components/loader/SkeletonProductSkeleton";
 const SingleProduct = () => {
     const { productId } = useParams()
     const { data, isLoading, refetch } = useGetSingleCarQuery(productId as string)
@@ -31,16 +30,16 @@ const SingleProduct = () => {
 
     const totalprice = car?.price * quantity;
     console.log({ totalprice, car: car?.image })
-    if (isLoading) return <Loading />
+    if (isLoading) return <SingleProductSkeleton />
     return (
-        <div className="max-w-7xl mx-auto min-h-[300px] p-6 bg-white border rounded-lg">
+        <div className="max-w-7xl mx-auto min-h-[400px] p-6 bg-white border rounded-lg">
             <div className="flex flex-col md:flex-row">
 
                 <div className="md:w-1/2 h-full">
                     <img
                         src={car?.image ? car?.image : img}
                         alt={`${car?.brand} ${car?.model}`}
-                        className="w-full object-cover h-full rounded-lg"
+                        className="w-full object-cover h-full min-h-[400px] rounded-lg"
                     />
                 </div>
 
@@ -57,22 +56,22 @@ const SingleProduct = () => {
                     </p>
                     <p className="text-gray-600 my-4">{car?.description}</p>
 
-                    <div className="flex w-32  items-center gap-3 border border-teal-500 rounded-lg p-2">
+                    <div className="flex w-24 items-center gap-0 p-1">
 
                         <span
-                            className="p-2 cursor-pointer bg-teal-500 flex justify-center text-white rounded-md disabled:opacity-50"
+                            className="p-1.5 cursor-pointer bg-teal-500 flex justify-center text-white rounded-sm disabled:opacity-50"
                             onClick={handleDecrease}
                         // disabled={quantity === 1}
                         >
-                            <Minus size={18} />
+                            <Minus size={15} />
                         </span>
                         <span className="w-10 text-center text-lg font-medium">{quantity}</span>
                         <span
-                            className="p-2 cursor-pointer flex justify-center  bg-teal-500 text-white rounded-md disabled:opacity-50"
+                            className="p-1.5 cursor-pointer flex justify-center text-xl  bg-teal-500 text-white rounded-sm disabled:opacity-50"
                             onClick={handleIncrease}
 
                         >
-                            <Plus size={18} />
+                            <Plus size={15} />
                         </span>
                     </div>
                     {/* Order Button */}
