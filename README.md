@@ -1,50 +1,61 @@
-# React + TypeScript + Vite
+# Car Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Car Store is an online platform that allows users to browse, order, update, and manage car listings. It offers a wide range of car entries, with functionalities to create, edit, delete, and track orders. Built with Node.js, Express, MongoDB, and Mongoose, it provides a seamless experience for managing car inventories and customer orders.
 
-Currently, two official plugins are available:
+## Live Link: https://project-44.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
 
-## Expanding the ESLint configuration
+- **React.js** 
+- **Tailwind css** 
+- **TypeScript** 
+- **Redux**  
+- **RTK Query** 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
+- CRUD operations for car entries
+- Mongoose schema validation with proper error message
+- Environment variable configuration
+- Development and production modes
+## Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+
+## Getting Started
+
+Follow these steps to set up and run the project locally.
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/Al-amin07/project_4_frontend.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 2. Install Dependencies
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Navigate to the project directory and install the necessary dependencies:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+   ```bash
+   cd project_4_frontend
+   npm install
+   ```
+
+## 3. Set Up Environment Variables
+Create a .env file in the root of the project to store environment variables, such as MongoDB URI or any secret keys. Here’s an example:
+```bash
+VITE_STRIPE_PUBLIC_KEY=
+VITE_API_URL=https://carstore-lake.vercel.app/api
+VITE_IMGBB_KEY=635aed7c10dd4b1cbf..412d2a8f21cb
+```
+
+## 4. Run the Project
+- **Development Mode**
+To start the project in development mode with hot reloading:
+```bash
+npm run dev
+```
+- **Production Mode**
+If you prefer to run the project in production mode:
+```bash
+npm run build
 ```
