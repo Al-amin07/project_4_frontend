@@ -3,6 +3,23 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { logout, selectUser } from "../redux/features/user/userSlice";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+
+    DropdownMenuSeparator,
+    DropdownMenuShortcut,
+
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
+import { BsPersonCircle } from "react-icons/bs";
+
+import { CartModal } from "./cart/CartModal";
+import { selectCart } from "@/redux/features/cart/cartSlice";
 
 const navLinks = [
     { path: '/', name: 'Home' },
@@ -17,8 +34,9 @@ const Navbar = () => {
     const [open, setOpen] = useState(false)
     const location = useLocation()
     const user = useAppSelector(selectUser)
+    const cart = useAppSelector(selectCart)
     const dispatch = useAppDispatch()
-    console.log(user)
+    console.log({ user, cart })
     const handleLogout = () => {
         dispatch(logout())
         toast.success('User logged out')
@@ -50,26 +68,45 @@ const Navbar = () => {
                     <div className="flex items-center gap-2">
                         {
                             user ?
-                                <div className="sm:flex sm:gap-2">
-                                    <Link
-                                        className="rounded-md bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow"
 
-                                        to={'/dashboard'}
-                                    >
-                                        DashBoard
-                                    </Link>
+                                <div className="flex items-center gap-3 ">
+                                    <CartModal cart={cart} />
+                                    <DropdownMenu >
+                                        <DropdownMenuTrigger asChild>
 
-                                    <div className="hidden sm:flex">
-                                        <button
-                                            onClick={handleLogout}
-                                            className="rounded-md cursor-pointer
-                                            bg-gray-100 px-4 py-2 text-sm font-medium text-teal-600"
+                                            <div className="text-slate-800 hover:text-teal-600 transition-all duration-300">
+                                                <BsPersonCircle size={34} className="cursor-pointer" />
+                                            </div>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent className="w-48 mr-8" align="start">
+                                            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                                            <DropdownMenuGroup>
+                                                <Link to={'/dashboard'}>
+                                                    <DropdownMenuItem className="">
+                                                        Dashboard
+                                                        <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                                                    </DropdownMenuItem>
+                                                </Link>
+                                                <Link to={'/dashboard/profile'}>
+                                                    <DropdownMenuItem className="">
+                                                        Profile
+                                                        <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                                                    </DropdownMenuItem>
+                                                </Link>
 
-                                        >
-                                            logout
-                                        </button>
-                                    </div>
+
+                                            </DropdownMenuGroup>
+                                            <DropdownMenuSeparator />
+
+
+                                            <DropdownMenuItem onClick={handleLogout}>
+                                                Log out
+                                                <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+                                            </DropdownMenuItem>
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
                                 </div> :
+
                                 <div className="sm:flex sm:gap-2">
                                     <Link
                                         className="rounded-md bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow"

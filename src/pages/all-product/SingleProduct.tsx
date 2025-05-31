@@ -1,35 +1,25 @@
 import { useParams } from "react-router";
 import { useGetSingleCarQuery } from "../../redux/features/cars/carApi";
-import { Minus, Plus } from "lucide-react";
-import { useState } from "react";
-import PaymentModal from "../dashboard/modal/PaymentModal";
+import { BsFillCartPlusFill } from "react-icons/bs";
+
+
 
 import img from '@/assets/car2.jpeg'
 import SingleProductSkeleton from "@/components/loader/SkeletonProductSkeleton";
+import { ArrowRight } from "lucide-react";
+import toast from "react-hot-toast";
+import { useAppDispatch } from "@/redux/hooks";
+import { addCar } from "@/redux/features/cart/cartSlice";
+
 const SingleProduct = () => {
     const { productId } = useParams()
-    const { data, isLoading, refetch } = useGetSingleCarQuery(productId as string)
-    const [open, setOpen] = useState(false)
+    const { data, isLoading } = useGetSingleCarQuery(productId as string)
+    const dispatch = useAppDispatch()
     const car = data?.data
-    const [quantity, setQuantity] = useState(1);
-
-    const handleIncrease = () => {
-        if (quantity < 10) {
-            setQuantity(quantity + 1);
-
-        }
-    };
-
-    const handleDecrease = () => {
-        if (quantity > 1) {
-            setQuantity(quantity - 1);
-
-        }
-    };
-
-
-    const totalprice = car?.price * quantity;
-    console.log({ totalprice, car: car?.image })
+    const handleAddToCart = () => {
+        dispatch(addCar(car))
+        toast.success('Product added to cart')
+    }
     if (isLoading) return <SingleProductSkeleton />
     return (
         <div className="max-w-7xl mx-auto min-h-[400px] p-6 bg-white border rounded-lg">
@@ -43,11 +33,11 @@ const SingleProduct = () => {
                     />
                 </div>
 
-                <div className={`md:w-1/2 ${car?.image ? 'md:ml-6' : ''}`}>
+                <div className={`md:w-1/2  ${car?.image ? 'md:ml-6' : ''}`}>
                     <h1 className="text-3xl font-bold text-gray-800">
                         {car?.brand} {car?.model}
                     </h1>
-                    <p className="text-gray-600 mt-2">Category: {car?.category}</p>
+                    <span className="text-teal-600 bg-teal-50 px-3 py-1 rounded-full inline-block font-semibold my-3"> {car?.category}</span>
                     <p className="text-gray-600 mt-2">Release Date : {car?.year}</p>
                     <p className="text-gray-600 mt-2">Price: ${car?.price.toLocaleString()}</p>
                     <p className="text-gray-600 mt-2">Quantity: {car?.quantity}</p>
@@ -55,28 +45,10 @@ const SingleProduct = () => {
                         {car.inStock ? 'In Stock' : 'Out of Stock'}
                     </p>
                     <p className="text-gray-600 my-4">{car?.description}</p>
-
-                    <div className="flex w-24 items-center gap-0 p-1">
-
-                        <span
-                            className="p-1.5 cursor-pointer bg-teal-500 flex justify-center text-white rounded-sm disabled:opacity-50"
-                            onClick={handleDecrease}
-                        // disabled={quantity === 1}
-                        >
-                            <Minus size={15} />
-                        </span>
-                        <span className="w-10 text-center text-lg font-medium">{quantity}</span>
-                        <span
-                            className="p-1.5 cursor-pointer flex justify-center text-xl  bg-teal-500 text-white rounded-sm disabled:opacity-50"
-                            onClick={handleIncrease}
-
-                        >
-                            <Plus size={15} />
-                        </span>
+                    <div>
+                        <span onClick={handleAddToCart} className="bg-teal-600 max-w-24 hover:bg-transparent hover:text-teal-600 border border-teal-600 transition-all duration-300 cursor-pointer  text-white px-5 py-1  flex items-center justify-between "><BsFillCartPlusFill size={20} /> <ArrowRight /></span>
                     </div>
-                    {/* Order Button */}
-
-                    <PaymentModal refetch={refetch} totalPrice={totalprice} quantity={quantity} car={car} open={open} setOpen={setOpen} />
+                    {/* <PaymentModal refetch={refetch} totalPrice={totalprice} quantity={quantity} car={car} open={open} setOpen={setOpen} /> */}
                 </div>
             </div>
         </div>

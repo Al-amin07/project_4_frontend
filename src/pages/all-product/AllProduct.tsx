@@ -6,11 +6,15 @@ import { Select, SelectContent, SelectGroup, SelectTrigger, SelectValue, SelectI
 import { categories } from "../dashboard/admin/contains";
 import { Button } from "@/components/ui/button";
 import ProductSkeletonCard from "@/components/loader/ProductSkeletonLoader";
+import { useSearchParams } from "react-router";
 
 
 const AllProduct = () => {
     const [search, setSearch] = useState('')
-    const [category, setCategory] = useState<string | null>(null)
+    const [params] = useSearchParams()
+    const categoryParam = params.get('category')
+
+    const [category, setCategory] = useState<string | null>(categoryParam || null)
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(100000);
     // Assuming total items is 100 for pagination example
@@ -24,8 +28,6 @@ const AllProduct = () => {
 
     ])
     const products = data?.data || [];
-    // console.log(products)
-    // console.log(data)
     const [currentPage, setCurrentPage] = useState(1);
     const totalPage = Math.ceil(products?.length / 6);
     const handleReset = () => {
@@ -34,18 +36,17 @@ const AllProduct = () => {
         setMinPrice(0)
         setMaxPrice(100000)
     }
-    console.log({ products })
     const items = products?.slice((currentPage - 1) * 6, currentPage * 6);
     return (
         <div>
             <div className="flex items-center justify-center flex-wrap gap-6 mb-8">
                 <input placeholder="Search here" onChange={(e) => setSearch(e.target.value)} type="text" className="border py-1 px-3" />
-                <Select onValueChange={(value) => setCategory(value)}>
+                <Select defaultValue={category as string} onValueChange={(value) => setCategory(value)}>
                     <SelectTrigger className="w-[180px]">
                         <SelectValue className="text-black" placeholder="Select Category" />
                     </SelectTrigger>
-                    <SelectContent>
-                        <SelectGroup>
+                    <SelectContent >
+                        <SelectGroup >
                             <SelectLabel>Select Category</SelectLabel>
                             {
                                 categories.map(el => <SelectItem value={el?.value}>{el?.value}</SelectItem>)

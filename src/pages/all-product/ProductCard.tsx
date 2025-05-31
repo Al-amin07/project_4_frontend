@@ -1,9 +1,13 @@
 
+import { useAppDispatch } from "@/redux/hooks";
 import { TCar } from "../../types";
 
-import { AlertTriangle, BadgeCheck } from "lucide-react";
+import { AlertTriangle, BadgeCheck, Eye } from "lucide-react";
+import { BsFillCartPlusFill } from "react-icons/bs";
 
 import { Link } from "react-router";
+import toast from "react-hot-toast";
+import { addCar } from "@/redux/features/cart/cartSlice";
 
 type TProp = {
     car: TCar
@@ -11,64 +15,29 @@ type TProp = {
 
 const ProductCard = ({ car }: TProp) => {
     console.log({ car })
+    const dispatch = useAppDispatch()
+    const handleAddToCart = () => {
+        toast.success('Product added to cart')
+        dispatch(addCar(car))
+    }
     return (
-        // <article className="overflow-hidden  rounded-lg border border-gray-200 bg-white shadow-xs">
-        //     <div className="relative">
+        <div className="bg-white cursor-pointer group  shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+            <div className="relative">
+                <img
+                    src={car.image || "/placeholder-car.jpg"}
+                    alt={`${car.brand} ${car.model}`}
+                    className="w-full h-52 object-cover"
+                />
+                <div className="flex absolute z-10 top-1/2 -translate-y-1/2 items-center gap-2 left-1/2 -translate-x-1/2">
+                    <Link to={`/products/${car._id}`} className="bg-white/80 opacity-0 group-hover:opacity-100 -translate-x-20 group-hover:translate-x-0 cursor-pointer text-gray-800 px-2 py-1.5 text-sm  hover:bg-teal-600 hover:text-white   transition-all duration-500 ">
+                        <Eye size={20} />
+                    </Link>
+                    <span onClick={handleAddToCart} className="bg-white/80 opacity-0 group-hover:opacity-100 translate-x-20 group-hover:translate-x-0 cursor-pointer text-gray-800 px-2 py-1.5 text-sm  hover:bg-teal-600 hover:text-white  transition-all duration-500 "><BsFillCartPlusFill size={20} /> </span>
+                </div>
+                <div className="absolute inset-0 group-hover:bg-black/20 bg-black/0 transition-all duration-500">
 
-        //         <img
-        //             alt=""
-        //             src={car?.image || carimg}
-        //             className="h-56 w-full object-cover"
-        //         />
-        //         {/* <h2 className="absolute text-white top-5 left-5 backdrop-blur-lg py-1 text-sm border border-white rounded-full px-3">Price : {car?.price}</h2> */}
-
-        //         <Badge className="absolute top-5 right-5 backdrop-blur-2xl" variant={(car?.inStock) ? "default" : "destructive"}>{car.inStock ? "In Stock" : "Out of Stock"}</Badge>
-
-        //     </div>
-
-        //     <div className="p-4 sm:p-6">
-
-        //         <div className="flex justify-between items-center">
-        //             <h3 className="text-base font-semibold text-gray-900">
-        //                 Brand :  <span
-        //                     className="rounded-full bg-purple-100 px-2.5 py-0.5 text-sm whitespace-nowrap text-purple-600"
-        //                 >
-        //                     {car?.brand}
-        //                 </span>                    </h3>
-        //             <h3 className="text-base font-semibold text-gray-900">
-        //                 Model :  <span
-        //                     className="rounded-full bg-purple-100 px-2.5 py-0.5 text-sm whitespace-nowrap text-purple-600"
-        //                 >
-        //                     {car?.model}
-        //                 </span>                    </h3>
-
-        //         </div>
-        //         <p className="text-base mt-3 font-medium"> Price : ${car?.price}</p>
-        //         <p className="text-base mt-1 font-medium"> category : {car?.category}</p>
-
-
-
-        //         {/* <p className="mt-2 line-clamp-2 text-sm/relaxed text-gray-500">
-        //             {car?.description}
-        //         </p> */}
-
-
-
-        //         <Link to={`/products/${car?._id}`} className="group bg-teal-50 mt-4 inline-flex items-center gap-1 text-sm font-medium text-teal-600 py-2 px-4 rounded-md hover:bg-teal-100">
-        //             View Details
-
-        //             <span aria-hidden="true" className="block transition-all group-hover:ms-0.5 rtl:rotate-180">
-        //                 &rarr;
-        //             </span>
-        //         </Link>
-        //     </div>
-        // </article>
-        <div className="bg-white  shadow-md overflow-hidden hover:shadow-lg transition duration-300">
-            <img
-                src={car.image || "/placeholder-car.jpg"}
-                alt={`${car.brand} ${car.model}`}
-                className="w-full h-52 object-cover"
-            />
+                </div>
+            </div>
 
             <div className="p-4 space-y-2">
                 <div className="flex justify-between items-center">
@@ -80,7 +49,7 @@ const ProductCard = ({ car }: TProp) => {
                     </span>
                 </div>
 
-                <p className="text-gray-500 text-sm">{car.year} • ${car.price.toLocaleString()}</p>
+                <p className="text-gray-500 text-sm">{car.year} </p>
                 <p className="text-gray-700 text-sm line-clamp-2">{car.description}</p>
 
                 <div className="flex justify-between items-center pt-2">
@@ -98,9 +67,9 @@ const ProductCard = ({ car }: TProp) => {
                         )}
                     </div>
 
-                    <Link to={`/products/${car._id}`} className="bg-teal-600 text-white px-4 py-1.5 text-sm  hover:bg-transparent hover:text-teal-600 border border-teal-600 transition-all duration-500">
-                        View Details
-                    </Link>
+                    <div className="flex items-center gap-2">
+                        <span className="text-teal-600 text-xl font-semibold"> ${car.price.toLocaleString()}</span>
+                    </div>
                 </div>
             </div>
         </div>

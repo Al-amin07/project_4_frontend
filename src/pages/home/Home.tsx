@@ -8,6 +8,7 @@ import HowItWorks from "./HowItWorks";
 import NewsLetter from "./NewsLetter";
 import Discover from "./Discover";
 import Community from "./Community";
+import CategorySection from "./Category";
 
 
 
@@ -19,6 +20,7 @@ const Home = () => {
         <div className="space-y-24 ">
 
             <Header />
+            <CategorySection />
             <Cars />
 
             <Blog />

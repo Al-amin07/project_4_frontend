@@ -21,6 +21,8 @@ import Order from "@/pages/dashboard/user/Order";
 import BlogPage from "@/pages/blog/BlogPage";
 import FAQPage from "@/pages/faq/FaqPage";
 
+import CheckoutPage from "@/pages/checkout/Checkout";
+
 const routes = createBrowserRouter([
     {
         path: '/',
@@ -62,7 +64,11 @@ const routes = createBrowserRouter([
             {
                 path: '/contact',
                 element: <Contact />
-            }
+            },
+            {
+                path: '/checkout',
+                element: <PrivateRoute><CheckoutPage /></PrivateRoute>
+            },
         ]
     },
     {
