@@ -67,11 +67,11 @@ const BlogPage = () => {
             <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center">Latest Blog Posts</h1>
             <div className="space-y-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {blogPosts.map((blog) => (
-                    <div key={blog.id} className="bg-white  cursor-pointer  shadow-md  hover:shadow-2xl hover:scale-105 transition-all duration-500">
+                    <div key={blog.id} className="bg-white  cursor-pointer  shadow-md  hover:shadow-2xl transition-all duration-300">
                         <div>
                             <img src={blog.image} alt={blog.title} className="w-full h-48 object-cover  " />
                         </div>
-                        <div className="p-6">
+                        <div className="p-6 ">
                             <h2 className="text-xl font-semibold">{blog.title}</h2>
                             <p className="text-gray-700 mt-2">{blog.description}</p>
                             <div className="mt-4 flex justify-between items-center">

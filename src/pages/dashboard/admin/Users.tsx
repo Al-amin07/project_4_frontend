@@ -8,7 +8,7 @@ import UserTable from "../table/UserTable";
 
 const Users = () => {
     const { data: users = [], isLoading, refetch } = useGetAllUserQuery(null)
-
+    console.log({ users })
     if (isLoading) return <TableLoader text="User Management" />
     return (
         <div className="p-4">

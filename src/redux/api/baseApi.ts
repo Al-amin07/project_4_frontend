@@ -33,10 +33,13 @@ const customBaseApiQuery = async (
     result?.error?.status === 401 ||
     (result?.error?.data as { message?: string })?.message === "jwt expired"
   ) {
-    const res = await fetch("http://localhost:5000/api/auth/refresh-token", {
-      method: "POST",
-      credentials: "include",
-    });
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/auth/refresh-token`,
+      {
+        method: "POST",
+        credentials: "include",
+      }
+    );
 
     const data = await res.json();
     if (data?.data?.accessToken) {

@@ -36,12 +36,12 @@ export default function StatusModal({ isLoading, handleStatus, defaultValue }: {
                     <DialogFooter className="flex mt-4 ">
                         <DialogClose asChild>
 
-                            <Button disabled={isLoading} className="bg-blue-100 disabled:cursor-not-allowed disabled:bg-blue-50  text-blue-600" type="submit" variant="secondary">
+                            <Button disabled={isLoading} className="" type="submit" variant="default">
                                 Update {isLoading && <ImSpinner10 size={18} className="my-auto animate-spin ml-3" />}
                             </Button>
                         </DialogClose>
                         <DialogClose asChild>
-                            <Button type="button" className="  text-blcak" variant="default">
+                            <Button type="button" className="  " variant="outline">
                                 Cancel
                             </Button>
                         </DialogClose>

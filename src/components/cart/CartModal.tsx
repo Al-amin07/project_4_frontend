@@ -2,6 +2,8 @@
 import {
     Sheet,
 
+    SheetClose,
+
     SheetContent,
 
     SheetTrigger,
@@ -94,12 +96,14 @@ export function CartModal({ cart }: { cart: { cars: ICartItem[], totalPrice: num
                                 <span>Total</span>
                                 <span>{cart?.totalPrice} ৳</span>
                             </div>
+                            <SheetClose asChild>
+                                <Link to={'/checkout'}>
+                                    <Button className="mt-4 w-full bg-teal-600 hover:bg-teal-700 text-white py-2 rounded">
+                                        Checkout
+                                    </Button>
+                                </Link>
+                            </SheetClose>
 
-                            <Link to={'/checkout'}>
-                                <Button className="mt-4 w-full bg-teal-600 hover:bg-teal-700 text-white py-2 rounded">
-                                    Checkout
-                                </Button>
-                            </Link>
                         </div>
                     }
                 </div>

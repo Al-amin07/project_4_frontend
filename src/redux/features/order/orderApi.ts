@@ -33,6 +33,13 @@ const orderApi = baseApi.injectEndpoints({
         body: payload,
       }),
     }),
+    createOrder: builder.mutation({
+      query: (payload) => ({
+        url: `/orders`,
+        method: "POST",
+        body: payload,
+      }),
+    }),
   }),
 });
 
@@ -42,4 +49,5 @@ export const {
   useUpdateOrderMutation,
   useGetClientSecretMutation,
   useGetUserOrderQuery,
+  useCreateOrderMutation,
 } = orderApi;

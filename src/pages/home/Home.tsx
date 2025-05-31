@@ -17,7 +17,7 @@ import CategorySection from "./Category";
 
 const Home = () => {
     return (
-        <div className="space-y-24 ">
+        <div className="space-y-28 ">
 
             <Header />
             <CategorySection />

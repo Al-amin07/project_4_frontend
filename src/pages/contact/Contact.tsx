@@ -5,7 +5,7 @@ const Contact = () => {
         <div className="bg-gray-50 min-h-screen">
             {/* Hero Section */}
 
-            <div className="container mx-auto bg-gradient-to-r from-teal-500 to-cyan-600 text-white px-4  py-20 text-center">
+            <div className="container mx-auto bg-gradient-to-r from-teal-500 to-cyan-900 text-white px-4  py-20 text-center">
                 <h1 className="text-4xl font-bold mb-4 sm:text-5xl">
                     Contact Us
                 </h1>

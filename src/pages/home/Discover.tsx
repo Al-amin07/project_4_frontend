@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import Text from "./Text";
+import { Button } from "@/components/ui/button";
 
 export default function Discover() {
     return (
@@ -8,7 +9,7 @@ export default function Discover() {
             <div className="max-w-7xl mx-auto text-center">
 
 
-                <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto mb-12">
+                <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto mb-8">
                     <div className="p-6 border rounded-lg hover:shadow-md transition">
                         <h3 className="text-xl font-semibold mb-2">🚗 New & Used Inventory</h3>
                         <p className="text-gray-600">Hand-picked cars from trusted dealers across the country.</p>
@@ -35,8 +36,11 @@ export default function Discover() {
                     </div>
                 </div>
 
-                <Link to="/all-product" className="inline-block bg-teal-600 hover:bg-teal-700 text-white border border-teal-600 hover:bg-transparent hover:text-teal-600  font-medium px-4 py-2  transition-all duration-500">
-                    Start Exploring
+                <Link to="/all-product" className="">
+                    <Button variant={'destructive'}>
+
+                        Start Exploring
+                    </Button>
                 </Link>
             </div>
         </section>

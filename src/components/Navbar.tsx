@@ -42,21 +42,25 @@ const Navbar = () => {
         toast.success('User logged out')
     }
     return (
-        <header className="bg-white w-full   shadow-md fixed top-0 z-10">
+        <header className="bg-white w-full   shadow-md fixed top-0 z-30">
             <div className="  px-4 lg:px-0 relative container mx-auto ">
                 <div className="flex  h-16 items-center justify-between">
                     <Link className="text-3xl lg:text-4xl   font-bold bg-gradient-to-r from-teal-600 via-cyan-400 to-cyan-700 bg-clip-text text-transparent" to={'/'}>DriveEase</Link>
 
                     <div className="hidden lg:block">
                         <nav aria-label="Global">
-                            <ul className="flex items-center gap-2 ">
+                            <ul className="flex py-2.5 gap-8 items-center  ">
                                 {
                                     navLinks.map(el => <li key={el?.path}>
-                                        <NavLink to={el?.path} className={`text-gray-800 transition py-2 px-4  text-base 
-                                           
-                                            ${location?.pathname === el.path && ' bg-teal-600 font-medium text-white'}`} > {el?.name}
+                                        <NavLink to={el?.path} className={`text-gray-800 transition-all duration-300 font-medium relative  group text-base 
+                                           hover:text-teal-600 
+                                            ${location?.pathname === el.path && ' text-teal-600 font-semibold underline underline-offset-4 decoration-[2px] '}`} >
+                                            {el?.name}
 
 
+                                            {
+                                                location?.pathname !== el.path && <span className="absolute   left-0 -bottom-[3px] h-[2.5px] w-0 bg-teal-600 transition-all duration-500 group-hover:w-full"></span>
+                                            }
                                         </NavLink>
                                     </li>)
                                 }

@@ -17,26 +17,29 @@ const AllProduct = () => {
     const [category, setCategory] = useState<string | null>(categoryParam || null)
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(100000);
+    const [currentPage, setCurrentPage] = useState(1);
     // Assuming total items is 100 for pagination example
     const { data, isLoading } = useGetAllCarQuery([
         { name: 'searchTerm', value: search },
         { name: 'sort', value: 'createdAt' },
-
+        // { name: 'page', value: currentPage },
         { name: 'category', value: category },
         { name: 'minPrice', value: minPrice },
         { name: 'maxPrice', value: maxPrice },
 
     ])
     const products = data?.data || [];
-    const [currentPage, setCurrentPage] = useState(1);
+
     const totalPage = Math.ceil(products?.length / 6);
     const handleReset = () => {
         setSearch('')
         setCategory(null)
+        setCurrentPage(1)
         setMinPrice(0)
         setMaxPrice(100000)
     }
     const items = products?.slice((currentPage - 1) * 6, currentPage * 6);
+    console.log({ currentPage, items, products, totalPage })
     return (
         <div>
             <div className="flex items-center justify-center flex-wrap gap-6 mb-8">

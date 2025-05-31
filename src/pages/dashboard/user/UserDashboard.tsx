@@ -74,14 +74,10 @@ const UserDashboard = () => {
                                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Brand
                                     </th>
+
                                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Model
-                                    </th>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Category
-                                    </th>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Quantity
+
+                                        Order Time
                                     </th>
                                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Price
@@ -97,7 +93,7 @@ const UserDashboard = () => {
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
                                 {
-                                    orders?.slice(0, 5)?.map((el: TOrder) => <UserOrderTable key={el?._id} order={el} />)
+                                    orders?.slice(0, 3)?.map((el: TOrder) => <UserOrderTable key={el?._id} order={el} />)
                                 }
                             </tbody>
                         </table>

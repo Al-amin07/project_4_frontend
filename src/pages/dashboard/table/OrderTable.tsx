@@ -49,11 +49,16 @@ const OrderTable = ({ order, refetch }: { order: TOrder, refetch: () => void }) 
 
                 </div>
             </td>
+
             <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm text-gray-900">{order?.quantity}</div>
+                <div className={`text-sm  text-gray-900`}>
+                    {
+                        order?.items?.reduce((total, item) => total + item.quentity, 0)
+                    }
+                </div>
             </td>
             <td className="px-6 py-4 whitespace-nowrap">
-                <div className={`text-sm  text-gray-900`}>$ {order?.totalPrice}</div>
+                <div className={`text-sm  text-gray-900`}> {order?.totalPrice} ট</div>
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {format(new Date(order?.createdAt), "PP")}
@@ -70,15 +75,13 @@ const OrderTable = ({ order, refetch }: { order: TOrder, refetch: () => void }) 
                     {order?.status || "pending"}
                 </span>
             </td>
-            {/* <td className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full  ${statusStyles[order?.status]}`}>
-                <div className="text-sm text-gray-900">{order?.status}</div>
-            </td> */}
+
             <td className="px-6 py-4 flex gap-2 whitespace-nowrap">
 
 
                 <OrderModal onSubmit={onSubmit} defaultValue={defaultValue} />
             </td>
-            {/* <DeleteModal isLoading={isLoading} isOpen={isOpen} closeModal={closeModal} handleDelete={handleDelete} /> */}
+
         </tr>
     );
 };

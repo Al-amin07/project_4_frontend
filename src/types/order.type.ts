@@ -1,12 +1,14 @@
 import { TCar } from ".";
 
-export type TOrder = {
+export interface TOrder {
   _id: string;
   email: string;
-  car: TCar;
-  quantity: number;
+  items: { car: TCar; quentity: number }[];
+  address: string;
+  phone: string;
+  name: string;
+  userId: string;
   totalPrice: number;
   createdAt: string;
-  transactionId?: string;
   status: "pending" | "processing" | "shipped" | "delivered" | "canceled";
-};
+}

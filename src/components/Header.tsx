@@ -52,45 +52,13 @@ const Header = () => {
     )
     return (
 
-        // <div>
-        //     <Swiper
-        //         spaceBetween={30}
-        //         centeredSlides={true}
-        //         autoplay={{
-        //             delay: 4000,
-        //             disableOnInteraction: false,
-        //         }}
-        //         loop={true}
-        //         pagination={{
-        //             clickable: true,
-        //         }}
-        //         navigation={true}
-        //         modules={[Autoplay, Pagination, Navigation]}
-        //         className="mySwiper min-h-[600px] z-30 mt-0 rounded-lg"
-        //     >
 
-        //         <SwiperSlide>
-        //             <Hero img={img5} />
-        //         </SwiperSlide>
-        //         <SwiperSlide>
-        //             <Hero img={img7} />
-        //         </SwiperSlide>
-        //         <SwiperSlide>
-        //             <Hero img={img4} />
-        //         </SwiperSlide>
-
-
-
-        //     </Swiper>
-        // </div>
         <div className=''>
             <div ref={sliderRef} className="keen-slider ">
-                <div className="keen-slider__slide "><Hero img={img5} /></div>
-                <div className="keen-slider__slide "><Hero img={img7} /></div>
-                <div className="keen-slider__slide "><Hero img={img4} /></div>
-                {/* <div className="keen-slider__slide number-slide4">4</div>
-            <div className="keen-slider__slide number-slide5">5</div>
-            <div className="keen-slider__slide number-slide6">6</div> */}
+                <div className="keen-slider__slide "><Hero title='Drive Your Dream Car' desc='Explore our exclusive collection of luxury and sports cars at unbeatable prices.' img={img5} /></div>
+                <div className="keen-slider__slide "><Hero title='Redefining the Car Buying Experience' desc='Browse. Choose. Drive. A seamless car shopping journey with trusted listings and customer-first support.' img={img7} /></div>
+                <div className="keen-slider__slide "><Hero title='Smart Cars. Smarter Choices' desc='Shop with confidence. Compare, customize, and connect — all through one intelligent platform' img={img4} /></div>
+
             </div>
         </div>
 

@@ -37,13 +37,15 @@ const About = () => {
     return (
         <div className="min-h-screen bg-white text-gray-800">
             {/* Hero Section */}
-            <section className="relative bg-gradient-to-r from-teal-500 to-cyan-600 text-white py-24 text-center px-4">
-                <h1 className="text-5xl font-extrabold mb-4">About Us</h1>
-                <p className="text-xl max-w-xl mx-auto">
+
+            <div className="container mx-auto bg-gradient-to-r from-teal-500 to-cyan-900 text-white px-4  py-20 text-center">
+                <h1 className="text-4xl font-bold mb-4 sm:text-5xl">
+                    About Us
+                </h1>
+                <p className="text-lg sm:text-xl max-w-2xl mx-auto">
                     We are committed to providing top-quality cars and excellent service.
                 </p>
-                <div className="absolute inset-0 bg-pattern opacity-10 pointer-events-none" />
-            </section>
+            </div>
 
             {/* Mission Section */}
             <section className="py-20 px-6 max-w-7xl mx-auto">

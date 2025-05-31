@@ -15,13 +15,13 @@ export default function HowItWorks() {
                     ].map(({ step, title, desc }, idx, arr) => (
                         <div key={step} className="flex-1 relative flex flex-col items-center text-center px-4">
                             {/* Number Circle */}
-                            <div className="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center text-xl font-bold z-10">
+                            <div className="w-14 h-14 rounded-full bg-teal-600 text-white flex items-center justify-center text-xl font-bold z-10">
                                 {step}
                             </div>
 
                             {/* Connector line */}
                             {idx !== arr.length - 1 && (
-                                <div className="hidden md:block absolute top-7 left-full w-24 h-1 bg-red-300 z-0"></div>
+                                <div className="hidden md:block absolute top-7 left-full w-24 h-1 bg-teal-300 z-0"></div>
                             )}
 
                             <h3 className="mt-6 text-xl font-semibold text-gray-900">{title}</h3>

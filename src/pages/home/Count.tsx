@@ -10,9 +10,9 @@ export default function Count({ target, label }: { target?: number, label: strin
                 separator=","
                 enableScrollSpy
                 scrollSpyDelay={200}
-                className="text-4xl font-bold text-primary mb-2"
+                className="text-4xl font-bold text-teal-600 mb-2"
             />
-            <p className="text-gray-600">{label}</p>
+            <p className="text-gray-700">{label}</p>
         </div>
     )
 }

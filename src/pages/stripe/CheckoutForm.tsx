@@ -44,7 +44,7 @@ const CheckoutForm = ({ orderData, setOpen, refetch }: TProp) => {
                 toast.success("Payment request created successfully!");
 
             }
-            orderData.transactionId = paymentIntent?.id
+            orderData.userId = paymentIntent?.id
             const { data: paymentData } = await axios.post(`${import.meta.env.VITE_API_URL}/orders`, orderData, { withCredentials: true })
             console.log({ paymentData });
             if (paymentData?.status) {

@@ -12,8 +12,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { useAppSelector } from "@/redux/hooks";
-import { selectCart } from "@/redux/features/cart/cartSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { emptyCart, selectCart } from "@/redux/features/cart/cartSlice";
+import { selectUser } from "@/redux/features/user/userSlice";
+import { useCreateOrderMutation } from "@/redux/features/order/orderApi";
+import toast from "react-hot-toast";
+import { ImSpinner10 } from "react-icons/im";
+import { useNavigate } from "react-router";
 
 
 
@@ -27,19 +32,46 @@ const formSchema = z.object({
 });
 
 const CheckoutPage = () => {
+    const user = useAppSelector(selectUser);
+    const navigate = useNavigate()
+    const [createOrder, { isLoading }] = useCreateOrderMutation();
+    const dispatch = useAppDispatch()
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: "",
-            email: "",
+            email: user?.email || "",
             phone: "",
             address: "",
         },
     });
     const cart = useAppSelector(selectCart)
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
-        console.log(values);
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+
+        const userData = {
+            name: values.name,
+            email: values.email,
+            phone: values.phone,
+            address: values.address,
+            userId: user?.id,
+            items: cart?.cars,
+            totalPrice: cart?.totalPrice
+        }
+        console.log({ values, userData });
+        try {
+            const result = await createOrder(userData).unwrap()
+            console.log({ result });
+            if (result?.status) {
+                toast.success(result?.message || 'Order created successfully')
+                dispatch(emptyCart())
+                navigate('/dashboard/order')
+            } else {
+                toast.error(result?.message)
+            }
+        } catch (error) {
+            console.log(error)
+        }
     };
 
     return (
@@ -70,7 +102,7 @@ const CheckoutPage = () => {
                                 <FormItem>
                                     <FormLabel>Email</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="john@example.com" {...field} />
+                                        <Input disabled placeholder="john@example.com" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -108,8 +140,8 @@ const CheckoutPage = () => {
                             )}
                         />
 
-                        <Button type="submit" className="w-full mt-4">
-                            Place Order
+                        <Button type="submit" disabled={isLoading} className="w-full mt-4 disabled:cursor-not-allowed">
+                            {isLoading && <ImSpinner10 size={18} className="my-auto animate-spin ml-3" />} Checkout
                         </Button>
                     </form>
                 </Form>

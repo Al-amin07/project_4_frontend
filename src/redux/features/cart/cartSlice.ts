@@ -47,8 +47,12 @@ const cartSlice = createSlice({
       state.cars = state.cars.filter((car) => car.car._id !== deletedCar._id);
       state.totalPrice -= deletedCar?.price * quentity;
     },
+    emptyCart(state) {
+      state.cars = [];
+      state.totalPrice = 0;
+    },
   },
 });
 export const selectCart = (state: RootState) => state.cart;
-export const { addCar, removeCar, deleteCar } = cartSlice.actions;
+export const { addCar, removeCar, deleteCar, emptyCart } = cartSlice.actions;
 export default cartSlice.reducer;

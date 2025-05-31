@@ -32,9 +32,16 @@ import { faqs } from "../home/Faq";
 
 const FAQPage = () => {
     return (
-        <section className="max-w-4xl bg-white mx-auto px-4 py-10">
-            <h1 className="text-4xl font-bold text-center mb-8 text-gray-900">Frequently Asked Questions</h1>
-            <Accordion type="single" collapsible className="w-full space-y-2 ">
+        <section className=" bg-white mx-auto px-4">
+            <div className="container mx-auto bg-gradient-to-r from-teal-500 to-cyan-900 text-white px-4  py-20 text-center">
+                <h1 className="text-4xl font-bold mb-4 sm:text-5xl">
+                    Frequently Asked Questions
+                </h1>
+                <p className="text-lg sm:text-xl max-w-2xl mx-auto">
+                    Everything you need to know — in one place.
+                </p>
+            </div>
+            <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto mt-12 space-y-2 ">
                 {faqs.map((faq, index) => (
                     <AccordionItem key={index} value={`item-${index}`}>
                         <AccordionTrigger className="text-lg  bg-white font-medium text-left text-gray-800 hover:text-blue-600 transition">

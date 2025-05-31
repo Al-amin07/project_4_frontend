@@ -11,9 +11,9 @@ import OrderTable from "../table/OrderTable";
 
 const AdminDashboard = () => {
     const { data } = useGetAdminDataQuery(null)
-    console.log(data)
     const { data: products, refetch } = useGetAllCarQuery(null)
-    const { data: orders = [] } = useGetAllOrderQuery(null)
+    const { data: orders = [], refetch: orderRefetch } = useGetAllOrderQuery(null)
+    console.log(orders)
     const cars = products?.data || [];
     return (
         <div className="p-4">
@@ -135,7 +135,7 @@ const AdminDashboard = () => {
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
                                         {
-                                            orders?.slice(0, 3)?.map((el: TOrder) => <OrderTable refetch={refetch} key={el?._id} order={el} />)
+                                            orders?.slice(0, 3)?.map((el: TOrder) => <OrderTable refetch={orderRefetch} key={el?._id} order={el} />)
                                         }
                                     </tbody>
                                 </table> : <div className="py-16">

@@ -51,13 +51,13 @@ export default function AdminSidebar({ isOpen, setIsOpen, logOut }: TProp) {
     return (
         <SidebarWrapper isOpen={isOpen} setIsOpen={setIsOpen} title="Admin Panel">
             {/* <UserInfo user={user} isOpen={isOpen} /> */}
-            <div className="mt-4 pt-5 md:pt-6 lg:pt-8 flex flex-col border-t border-gray-700 gap-3 relative">
+            <div className="mt-4 pt-5 md:pt-6 lg:pt-8 flex flex-col border-t border-gray-700 gap-2 relative">
                 {adminMenus.map((menu, i) => (
                     <Link
                         to={menu.link}
                         key={i}
-                        className={`group flex items-center text-sm gap-3.5 font-medium p-3
-             hover:bg-teal-600 rounded-md transition-colors duration-500 ${location.pathname === menu.link && "bg-teal-600 text-white"
+                        className={`group flex items-center text-sm gap-3.5 font-medium px-3 py-1.5
+             hover:bg-teal-600 transition-colors duration-500 ${location.pathname === menu.link && "bg-teal-600 text-white"
                             }`}
                     >
                         <div>{React.createElement(menu.icon, { size: "20" })}</div>
@@ -80,7 +80,7 @@ export default function AdminSidebar({ isOpen, setIsOpen, logOut }: TProp) {
                 ))}
                 <span
                     onClick={logOut}
-                    className="group cursor-pointer  flex items-center text-sm gap-3.5 font-medium px-4 py-3 transition-colors duration-500 hover:bg-teal-600 rounded-md mt-auto"
+                    className="group cursor-pointer  flex items-center text-sm gap-3.5 font-medium px-3 py-1.5 transition-colors duration-500 hover:bg-teal-600 mt-auto"
                 >
                     <div>
                         <MdOutlineLogout size="20" />

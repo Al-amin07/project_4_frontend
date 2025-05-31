@@ -18,39 +18,30 @@ const UserOrderTable = ({ order }: { order: TOrder }) => {
         <tr >
             <td className="px-4 py-2 whitespace-nowrap">
                 <div className="flex flex-col   text-sm gap-2 ">
-                    {/* <img className="h-12 w-12 rounded-md" src={order?.car?.image ? order?.car?.image : carImg} alt="" />
 
-                    <div className=" space-y-1.5">
-                        <div className="text-sm font-medium text-gray-900">
-                            {order?.car?.brand}
-                        </div>
-                        <div className="text-sm font-medium text-gray-900">
-                            {order?.transactionId || order?._id}
-                        </div>
-
-                    </div> */}
-                    <span>{order?.transactionId || order?._id}</span>
+                    <span>{order?._id}</span>
 
                 </div>
             </td>
             <td className="px-6 py-4 whitespace-nowrap">
                 <div className="text-sm font-medium text-gray-900">
-                    {order?.car?.brand}
 
+
+                    {
+                        order?.items?.map((el) => el.car.brand).join(", ")
+                    }
                 </div>
             </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm font-medium text-gray-900">
-                    {order?.car?.model}
 
-                </div>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm font-medium text-gray-900">
-                    {order?.car?.category}</div>
-            </td>
+
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {order?.quantity}
+                {
+                    new Date(order?.createdAt as string).toLocaleDateString("en-US", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                    })
+                }
             </td>
             <td className="px-6 py-4 whitespace-nowrap">
                 <div className={`text-sm  text-gray-900`}>$ {order?.totalPrice}</div>

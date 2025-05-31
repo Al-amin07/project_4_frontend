@@ -9,20 +9,20 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import CheckoutForm from "@/pages/stripe/CheckoutForm";
+// import CheckoutForm from "@/pages/stripe/CheckoutForm";
 import { selectUser } from "@/redux/features/user/userSlice";
 import { useAppSelector } from "@/redux/hooks";
 import { TCar } from "@/types";
-import { TOrder } from "@/types/order.type";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+// import { TOrder } from "@/types/order.type";
+// import { Elements } from "@stripe/react-stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
 import { useLocation, useNavigate } from "react-router";
 
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+// const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 
-export default function PaymentModal({ open, setOpen, car, totalPrice, quantity, refetch }: { setOpen: (open: boolean) => void, open: boolean, car: TCar, totalPrice: number, quantity: number, refetch: () => void }) {
+export default function PaymentModal({ open, setOpen, car, totalPrice, quantity }: { setOpen: (open: boolean) => void, open: boolean, car: TCar, totalPrice: number, quantity: number, refetch: () => void }) {
     console.log(car)
     const location = useLocation()
     const user = useAppSelector(selectUser);
@@ -31,12 +31,11 @@ export default function PaymentModal({ open, setOpen, car, totalPrice, quantity,
         navigate('/login', { state: { from: location.pathname } })
     }
 
-    const orderData: Partial<TOrder> = {
-        email: user?.email,
-        quantity,
-        totalPrice,
-        car: car
-    }
+    // const orderData: Partial<TOrder> = {
+    //     email: user?.email,
+    //     totalPrice,
+    //     car: car
+    // }
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
@@ -102,9 +101,9 @@ export default function PaymentModal({ open, setOpen, car, totalPrice, quantity,
                     </div>
                 </div>
                 <div>
-                    <Elements stripe={stripePromise}>
+                    {/* <Elements stripe={stripePromise}>
                         <CheckoutForm refetch={refetch} setOpen={setOpen} orderData={orderData} />
-                    </Elements>
+                    </Elements> */}
                 </div>
 
             </DialogContent>

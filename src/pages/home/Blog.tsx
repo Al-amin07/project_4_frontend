@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+
 import { Button } from "@/components/ui/button";
 import Text from "./Text";
 import img1 from '@/assets/blog/1.jpg'
@@ -83,19 +83,20 @@ export default function Blog() {
 
                 <Text title="Latest Car Insights & News" desc="Stay ahead in the world of automobiles with our expert blogs! From the latest car releases to maintenance tips and electric vehicle trends, we bring you in-depth articles to help you make informed decisions." />
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {blogPosts?.slice(0, 6).map((post) => (
-                        <Card key={post.id} className="overflow-hidden rounded-lg shadow-lg bg-white">
-                            <img
-                                src={post.image}
-                                alt={post.title}
-                                className="w-full h-48 object-cover"
-                            />
-                            <CardContent className="p-4">
-                                <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
-                                <p className="text-gray-600 mb-4">{post.description}</p>
-                                <Button variant="default" className="mt-auto">Read More</Button>
-                            </CardContent>
-                        </Card>
+                    {blogPosts?.slice(0, 6).map((blog) => (
+                        <div key={blog.id} className="bg-white  cursor-pointer  shadow-md  hover:shadow-2xl transition-all duration-300">
+                            <div>
+                                <img src={blog.image} alt={blog.title} className="w-full h-48 object-cover  " />
+                            </div>
+                            <div className="p-6 ">
+                                <h2 className="text-xl font-semibold">{blog.title}</h2>
+                                <p className="text-gray-700 mt-2">{blog.description}</p>
+                                <div className="mt-4 flex justify-between items-center">
+                                    <p className="text-sm text-gray-500 mb-1">{blog.date}</p>
+                                    <Button variant={'outline'} className=" text-black ">Read More →</Button>
+                                </div>
+                            </div>
+                        </div>
                     ))}
                 </div>
                 <div className="flex justify-center mt-8">

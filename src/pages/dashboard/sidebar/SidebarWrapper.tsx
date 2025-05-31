@@ -30,7 +30,7 @@ export default function SidebarWrapper({ isOpen, setIsOpen, title, children }: T
             </div>
 
             {isOpen && <div className="text-center mt-4 pt-2 border-t border-gray-700">
-                <Link className="text-4xl   font-bold bg-gradient-to-r from-teal-200 via-cyan-400 to-cyan-700 bg-clip-text text-transparent" to={'/'}>DriveEase</Link></div>}
+                <Link className="text-4xl  font-bold bg-gradient-to-r from-teal-200 via-cyan-400 to-cyan-700 bg-clip-text text-transparent" to={'/'}>DriveEase</Link></div>}
 
             {children}
         </div>
