@@ -14,7 +14,7 @@ const Order = () => {
         <div className="p-4">
             <h1 className="text-2xl font-bold mb-6">Order Overview</h1>
             {
-                orders.length < 0 ?
+                orders.length > 0 ?
                     <div className="bg-white rounded-lg shadow-md">
                         <div className="overflow-x-auto">
                             <table className="min-w-full divide-y divide-gray-200">

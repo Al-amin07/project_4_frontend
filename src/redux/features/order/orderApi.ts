@@ -12,6 +12,7 @@ const orderApi = baseApi.injectEndpoints({
     }),
     getUserOrder: builder.query({
       query: (email: string) => `/orders/${email}`,
+      providesTags: ["Car"],
       transformResponse: (res: any) => {
         return res.data;
       },
@@ -39,6 +40,7 @@ const orderApi = baseApi.injectEndpoints({
         method: "POST",
         body: payload,
       }),
+      invalidatesTags: ["Car"],
     }),
   }),
 });
