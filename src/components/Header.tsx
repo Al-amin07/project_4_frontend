@@ -53,7 +53,7 @@ const Header = () => {
     return (
 
 
-        <div className=''>
+        <div className=' '>
             <div ref={sliderRef} className="keen-slider ">
                 <div className="keen-slider__slide "><Hero title='Drive Your Dream Car' desc='Explore our exclusive collection of luxury and sports cars at unbeatable prices.' img={img5} /></div>
                 <div className="keen-slider__slide "><Hero title='Redefining the Car Buying Experience' desc='Browse. Choose. Drive. A seamless car shopping journey with trusted listings and customer-first support.' img={img7} /></div>

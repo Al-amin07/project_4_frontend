@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Cars from "./Cars";
 import Faq from "./Faq";
@@ -10,29 +9,22 @@ import Discover from "./Discover";
 import Community from "./Community";
 import CategorySection from "./Category";
 
-
-
-
-
-
 const Home = () => {
-    return (
-        <div className="space-y-28 ">
+  return (
+    <div className="space-y-28 ">
+      <Header />
+      <CategorySection />
+      <Cars />
 
-            <Header />
-            <CategorySection />
-            <Cars />
-
-            <Blog />
-            <HowItWorks />
-            <Testimonial />
-            <Faq />
-            <Discover />
-            <Community />
-            <NewsLetter />
-
-        </div>
-    );
+      <Blog />
+      <HowItWorks />
+      <Testimonial />
+      <Faq />
+      <Discover />
+      <Community />
+      <NewsLetter />
+    </div>
+  );
 };
 
 export default Home;
